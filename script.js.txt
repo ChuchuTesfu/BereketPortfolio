@@ -1,0 +1,268 @@
+### `script.js`
+
+This file brings the website to life with interactivity, animations, and the CMS functionality.
+
+```javascript
+document.addEventListener('DOMContentLoaded', () => {
+
+    //================================================================
+    // 1. CMS for Portfolio & Testimonials
+    // Easily add or remove items here.
+    //================================================================
+    const portfolioData = [
+        {
+            id: 1,
+            title: "Brand Anthem: 'Ignite'",
+            category: "cinematography",
+            thumbnail: "https://i.ibb.co/1MjzX12/cinematography-1.jpg",
+            content: `<iframe src="https://www.youtube.com/embed/LXb3EKWsInQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`,
+            description: "A high-energy promotional video for a new tech startup. We focused on dynamic shots and a powerful score to convey innovation and speed.",
+            tools: ["Sony FX3", "DaVinci Resolve", "Adobe Premiere Pro"]
+        },
+        {
+            id: 2,
+            title: "Creator Collab: Travel Vlog",
+            category: "video-editing",
+            thumbnail: "https://i.ibb.co/L9m8vS7/video-editing-1.jpg",
+            content: `<iframe src="https://www.youtube.com/embed/aqz-KE-bpKQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`,
+            description: "Edited a 3-part YouTube series for a travel vlogger. Focused on fast-paced, engaging storytelling with custom motion graphics and sound design to keep viewers hooked.",
+            tools: ["Adobe Premiere Pro", "After Effects", "Audition"]
+        },
+        {
+            id: 3,
+            title: "E-commerce Product Showcase",
+            category: "photo",
+            thumbnail: "https://i.ibb.co/1nkV4Z6/photo-editing-1.jpg",
+            content: `<img src="https://i.ibb.co/1nkV4Z6/photo-editing-1.jpg" alt="E-commerce Product Showcase">`,
+            description: "Full retouching and color correction for a new line of luxury watches. The goal was to create a clean, high-end look while maintaining product accuracy.",
+            tools: ["Adobe Photoshop", "Lightroom"]
+        },
+        {
+            id: 4,
+            title: "Cafe Brand Identity",
+            category: "graphics",
+            thumbnail: "https://i.ibb.co/rGwYV27/graphics-1.jpg",
+            content: `<img src="https://i.ibb.co/rGwYV27/graphics-1.jpg" alt="Cafe Brand Identity">`,
+            description: "Developed a complete brand identity for a local coffee shop, including logo design, menu layout, and social media templates for a cohesive and modern brand image.",
+            tools: ["Adobe Illustrator", "Photoshop"]
+        },
+        {
+            id: 5,
+            title: "Explainer Video Animations",
+            category: "motion",
+            thumbnail: "https://i.ibb.co/M7XwGkS/motion-graphics-1.jpg",
+            content: `<iframe src="https://www.youtube.com/embed/IMx3aB8y3h8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`,
+            description: "Created animated typography and iconography for an explainer video. The clean, fluid animations help simplify complex topics for the viewer.",
+            tools: ["Adobe After Effects", "Illustrator"]
+        },
+        {
+            id: 6,
+            title: "Corporate Event Highlights",
+            category: "video-editing",
+            thumbnail: "https://i.ibb.co/qN10m4p/video-editing-2.jpg",
+            content: `<iframe src="https://www.youtube.com/embed/u31qwQUeGuM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`,
+            description: "A dynamic highlight reel for a major corporate conference. This edit combines keynote speeches, attendee interviews, and b-roll to capture the event's energy.",
+            tools: ["Adobe Premiere Pro"]
+        }
+    ];
+
+    const testimonialsData = [
+        {
+            quote: "Bereket has a rare talent for understanding a vision and executing it beyond expectations. His work elevated our brand's storytelling to a new level.",
+            client: "Jane Doe",
+            role: "Marketing Director, Innovate Inc."
+        },
+        {
+            quote: "The editing was seamless. My YouTube engagement shot up after I started working with Bereket. He just gets what makes a video work.",
+            client: "Alex Smith",
+            role: "YouTuber (TechFlow)"
+        },
+        {
+            quote: "From the initial concept to the final delivery, the process was professional and creative. The final video was exactly what we needed.",
+            client: "Sam Wilson",
+            role: "Owner, The Daily Grind Cafe"
+        }
+    ];
+
+
+    //================================================================
+    // 2. Dynamic Content Rendering
+    //================================================================
+    const portfolioGrid = document.getElementById('portfolio-grid');
+    const testimonialsContainer = document.getElementById('testimonials-container');
+
+    function renderPortfolio(items) {
+        portfolioGrid.innerHTML = items.map(item => `
+            <div class="portfolio__item animate-on-scroll" data-id="${item.id}" data-category="${item.category}">
+                <img src="${item.thumbnail}" alt="${item.title}" class="portfolio__item-img">
+                <div class="portfolio__item-overlay">
+                    <h3 class="portfolio__item-title">${item.title}</h3>
+                    <span class="portfolio__item-category">${item.category.replace('-', ' ')}</span>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    function renderTestimonials() {
+        if (!testimonialsContainer) return;
+        testimonialsContainer.innerHTML = testimonialsData.map(t => `
+            <div class="testimonial__card animate-on-scroll">
+                <p class="testimonial__quote">${t.quote}</p>
+                <cite class="testimonial__client">${t.client}</cite>
+                <span class="testimonial__client-role">${t.role}</span>
+            </div>
+        `).join('');
+    }
+    
+    // Initial render
+    renderPortfolio(portfolioData);
+    renderTestimonials();
+
+
+    //================================================================
+    // 3. Dark/Light Theme Toggle
+    //================================================================
+    const themeToggleButton = document.getElementById('theme-toggle');
+    const darkTheme = 'dark-theme';
+    const iconTheme = 'bx-sun'; // Icon to show for dark theme
+
+    // Check for saved theme in localStorage
+    const selectedTheme = localStorage.getItem('selected-theme');
+    const selectedIcon = localStorage.getItem('selected-icon');
+
+    const getCurrentTheme = () => document.body.classList.contains(darkTheme) ? 'dark' : 'light';
+    const getCurrentIcon = () => themeToggleButton.classList.contains(iconTheme) ? 'bx-moon' : 'bx-sun';
+
+    if (selectedTheme) {
+        document.body.classList[selectedTheme === 'dark' ? 'add' : 'remove'](darkTheme);
+        themeToggleButton.classList[selectedIcon === 'bx-sun' ? 'add' : 'remove'](iconTheme);
+    }
+
+    themeToggleButton.addEventListener('click', () => {
+        document.body.classList.toggle(darkTheme);
+        themeToggleButton.classList.toggle(iconTheme);
+        localStorage.setItem('selected-theme', getCurrentTheme());
+        localStorage.setItem('selected-icon', getCurrentIcon());
+    });
+
+
+    //================================================================
+    // 4. Sticky Header & Active Nav Link
+    //================================================================
+    const header = document.querySelector('.header');
+    const navLinks = document.querySelectorAll('.nav__link');
+    const sections = document.querySelectorAll('section[id]');
+
+    function scrollHeader() {
+        if (window.scrollY >= 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    }
+    window.addEventListener('scroll', scrollHeader);
+
+    function highlightNavOnScroll() {
+        let scrollY = window.pageYOffset;
+        
+        sections.forEach(current => {
+            const sectionHeight = current.offsetHeight;
+            const sectionTop = current.offsetTop - 150; // a bit of offset
+            const sectionId = current.getAttribute('id');
+
+            if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                navLinks.forEach(link => {
+                    link.classList.remove('active-link');
+                    if(link.getAttribute('href') === `#${sectionId}`) {
+                        link.classList.add('active-link');
+                    }
+                });
+            }
+        });
+    }
+    window.addEventListener('scroll', highlightNavOnScroll);
+
+
+    //================================================================
+    // 5. Portfolio Filtering
+    //================================================================
+    const filterItems = document.querySelectorAll('.portfolio__filter-item');
+    
+    filterItems.forEach(item => {
+        item.addEventListener('click', function() {
+            filterItems.forEach(el => el.classList.remove('active-filter'));
+            this.classList.add('active-filter');
+            
+            const filterValue = this.getAttribute('data-filter');
+            const filteredData = filterValue === 'all' 
+                ? portfolioData 
+                : portfolioData.filter(p => p.category === filterValue);
+            
+            renderPortfolio(filteredData);
+            // Re-initialize scroll animations for new items
+            observeElements();
+        });
+    });
+
+    
+    //================================================================
+    // 6. Portfolio Modal
+    //================================================================
+    const modal = document.getElementById('portfolio-modal');
+    const modalCloseButton = document.getElementById('modal-close-button');
+    const modalBody = document.getElementById('modal-body-content');
+
+    portfolioGrid.addEventListener('click', (e) => {
+        const item = e.target.closest('.portfolio__item');
+        if (item) {
+            const itemId = parseInt(item.dataset.id);
+            const portfolioItem = portfolioData.find(p => p.id === itemId);
+
+            if (portfolioItem) {
+                modalBody.innerHTML = `
+                    <h2 class="modal__title">${portfolioItem.title}</h2>
+                    <p class="modal__description">${portfolioItem.description}</p>
+                    <div class="modal__tools">
+                        ${portfolioItem.tools.map(tool => `<span class="modal__tool-tag">${tool}</span>`).join('')}
+                    </div>
+                    <div class="modal__content-embed">${portfolioItem.content}</div>
+                `;
+                modal.classList.add('active');
+            }
+        }
+    });
+
+    const closeModal = () => {
+        modal.classList.remove('active');
+        modalBody.innerHTML = ''; // Clear content to stop videos from playing
+    };
+    
+    modalCloseButton.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            closeModal();
+        }
+    });
+
+
+    //================================================================
+    // 7. Scroll Animations
+    //================================================================
+    function observeElements() {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        const elementsToAnimate = document.querySelectorAll('.animate-on-scroll');
+        elementsToAnimate.forEach(el => observer.observe(el));
+    }
+
+    // Initial call
+    observeElements();
+});
+```

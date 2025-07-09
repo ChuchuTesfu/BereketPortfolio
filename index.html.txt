@@ -1,0 +1,220 @@
+### `index.html` This file contains the clean and semantic structure of the website.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bereket Tesfaye | Content Creator & Visual Storyteller</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Bereket Tesfaye's portfolio. A professional content creator specializing in cinematography, video editing, and visual storytelling for brands and YouTubers.">
+    <meta name="keywords" content="Bereket Tesfaye, Content Creator, Cinematographer, Video Editor, Graphic Designer, Motion Graphics, Adobe Premiere Pro, After Effects">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Icons (Boxicons) -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    
+    <!-- Fonts (Google Fonts - Poppins) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Header & Sticky Navigation -->
+    <header class="header">
+        <nav class="nav container">
+            <a href="#" class="nav__logo">Bereket Tesfaye</a>
+            <div class="nav__menu">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="#home" class="nav__link active-link">Home</a></li>
+                    <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
+                    <li class="nav__item"><a href="#portfolio" class="nav__link">Portfolio</a></li>
+                    <li class="nav__item"><a href="#skills" class="nav__link">Skills</a></li>
+                    <li class="nav__item"><a href="#contact" class="nav__link">Contact</a></li>
+                </ul>
+            </div>
+            <div class="nav__toggle">
+                <i class='bx bx-moon' id="theme-toggle"></i>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <video autoplay muted loop playsinline class="hero__video-bg">
+                <source src="https://assets.mixkit.co/videos/preview/mixkit-professional-photographer-taking-a-photo-by-a-lake-4287-large.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="hero__overlay"></div>
+            <div class="hero__content container">
+                <h1 class="hero__title animate-on-scroll">Bereket Tesfaye</h1>
+                <h2 class="hero__subtitle animate-on-scroll">Storytelling Through Visuals.</h2>
+                <p class="hero__description animate-on-scroll">I bring ideas to life with cinematic flair and strategic design.</p>
+                <a href="#portfolio" class="button animate-on-scroll">View My Work <i class='bx bx-right-arrow-alt'></i></a>
+            </div>
+        </section>
+
+        <!-- About Me Section -->
+        <section class="about section" id="about">
+            <div class="about__container container grid">
+                <div class="about__image-container animate-on-scroll">
+                    <img src="https://i.ibb.co/6Z09YwS/portrait-bereket.png" alt="Bereket Tesfaye" class="about__img">
+                </div>
+                <div class="about__data animate-on-scroll">
+                    <h2 class="section__title">About Me</h2>
+                    <p class="about__description">
+                        Hi, I'm Bereket Tesfaye. For over 7 years, I've been immersed in the world of digital media, transforming concepts into compelling visual narratives. My journey is fueled by a passion where <strong>art meets strategy</strong>, ensuring every frame, pixel, and design serves a purpose.
+                    </p>
+                    <p class="about__description">
+                        From high-energy commercial shoots to intricate motion graphics, I thrive on <strong>bringing ideas to life</strong>. I’ve partnered with innovative brands, dynamic YouTubers, and ambitious local businesses to elevate their content and connect with their audience on a deeper level.
+                    </p>
+                    <div class="about__skills">
+                        <h3>My Core Expertise:</h3>
+                        <ul>
+                            <li><i class='bx bxs-camera-movie'></i> Cinematography</li>
+                            <li><i class='bx bxs-edit'></i> Video & Photo Editing</li>
+                            <li><i class='bx bxs-paint'></i> Graphic & Motion Design</li>
+                            <li><i class='bx bxl-youtube'></i> Content Creation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section class="portfolio section" id="portfolio">
+            <h2 class="section__title animate-on-scroll">My Work</h2>
+            <div class="portfolio__filters container animate-on-scroll">
+                <span class="portfolio__filter-item active-filter" data-filter="all">All</span>
+                <span class="portfolio__filter-item" data-filter="cinematography">Cinematography</span>
+                <span class="portfolio__filter-item" data-filter="video-editing">Video Editing</span>
+                <span class="portfolio__filter-item" data-filter="graphics">Graphics</span>
+                <span class="portfolio__filter-item" data-filter="photo">Photo Editing</span>
+                <span class="portfolio__filter-item" data-filter="motion">Motion Graphics</span>
+            </div>
+            <div class="portfolio__container container grid" id="portfolio-grid">
+                <!-- Portfolio items will be injected here by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Why Choose Me / Skills Highlight Section -->
+        <section class="skills section" id="skills">
+            <div class="skills__container container">
+                <h2 class="section__title animate-on-scroll">My Strengths</h2>
+                <p class="skills__quote animate-on-scroll">
+                    “I don’t just edit or shoot — I help brands tell better stories and creators shine brighter.”
+                </p>
+                <div class="skills__grid grid">
+                    <div class="skills__item animate-on-scroll">
+                        <i class='bx bxs-video-plus'></i>
+                        <h3>Cinematic Visuals</h3>
+                        <p>Crafting beautiful, high-quality footage that captures attention.</p>
+                    </div>
+                    <div class="skills__item animate-on-scroll">
+                        <i class='bx bxs-direction-right'></i>
+                        <h3>Creative Direction</h3>
+                        <p>Guiding projects from concept to completion with a clear artistic vision.</p>
+                    </div>
+                    <div class="skills__item animate-on-scroll">
+                        <i class='bx bx-cut'></i>
+                        <h3>Seamless Editing</h3>
+                        <p>Pacing, rhythm, and flow that keeps viewers engaged.</p>
+                    </div>
+                    <div class="skills__item animate-on-scroll">
+                        <i class='bx bxs-palette'></i>
+                        <h3>Sharp Eye for Design</h3>
+                        <p>Balancing aesthetics and function in every graphic element.</p>
+                    </div>
+                     <div class="skills__item animate-on-scroll">
+                        <i class='bx bxs-megaphone'></i>
+                        <h3>Content Strategy</h3>
+                        <p>Understanding what works on different platforms to maximize impact.</p>
+                    </div>
+                    <div class="skills__item animate-on-scroll">
+                        <i class='bx bxs-bulb'></i>
+                        <h3>Story-driven Process</h3>
+                        <p>Putting the narrative first to create meaningful connections.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Testimonials Section -->
+        <section class="testimonials section" id="testimonials">
+             <h2 class="section__title animate-on-scroll">What Clients Say</h2>
+             <div class="testimonials__container container grid" id="testimonials-container">
+                <!-- Testimonials will be injected here by JavaScript -->
+             </div>
+        </section>
+
+
+        <!-- Contact Section -->
+        <section class="contact section" id="contact">
+            <h2 class="section__title animate-on-scroll">Let's Create Together</h2>
+            <div class="contact__container container grid">
+                <div class="contact__form-container animate-on-scroll">
+                    <form action="#" class="contact__form">
+                        <div class="contact__input-group">
+                            <input type="text" name="name" placeholder="Your Name" class="contact__input" required>
+                            <input type="email" name="email" placeholder="Your Email" class="contact__input" required>
+                        </div>
+                        <input type="text" name="subject" placeholder="Subject" class="contact__input" required>
+                        <textarea name="message" placeholder="Your Message" class="contact__input" rows="7" required></textarea>
+                        <button type="submit" class="button">Send Message <i class='bx bx-send'></i></button>
+                    </form>
+                </div>
+                <div class="contact__info-container animate-on-scroll">
+                    <h3>Get In Touch</h3>
+                    <p>Have a project in mind? I'd love to hear about it.</p>
+                    <div class="contact__info">
+                        <a href="mailto:hello@berekettesfaye.com" class="contact__info-link">
+                            <i class='bx bx-envelope'></i> hello@berekettesfaye.com
+                        </a>
+                        <a href="https://wa.me/1234567890" target="_blank" class="contact__info-link">
+                           <i class='bx bxl-whatsapp'></i> Chat on WhatsApp
+                        </a>
+                    </div>
+                    <div class="contact__socials">
+                        <a href="#" target="_blank"><i class='bx bxl-youtube'></i></a>
+                        <a href="#" target="_blank"><i class='bx bxl-instagram-alt'></i></a>
+                        <a href="#" target="_blank"><i class='bx bxl-linkedin-square'></i></a>
+                        <a href="#" target="_blank"><i class='bx bxl-tiktok'></i></a>
+                    </div>
+                    <div class="contact__ctas">
+                        <a href="#contact" class="button button--flex">
+                           <i class='bx bxs-chat'></i> Let’s Work Together
+                        </a>
+                        <a href="/path-to-your/portfolio.pdf" download class="button button--ghost">
+                            <i class='bx bxs-download'></i> Download My Portfolio
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer__container container">
+            <p>&copy; 2024 Bereket Tesfaye. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <!-- Portfolio Modal -->
+    <div class="portfolio__modal" id="portfolio-modal">
+        <div class="portfolio__modal-content">
+            <i class='bx bx-x portfolio__modal-close' id="modal-close-button"></i>
+            <div id="modal-body-content">
+                <!-- Modal content injected by JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
