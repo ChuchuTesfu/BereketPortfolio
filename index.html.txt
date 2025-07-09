@@ -1,4 +1,3 @@
-### `index.html` This file contains the clean and semantic structure of the website.
 <!DOCTYPE html>
 <html lang="en">
 <head>
