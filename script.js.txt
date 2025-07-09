@@ -1,10 +1,6 @@
-### `script.js`
-
-This file brings the website to life with interactivity, animations, and the CMS functionality.
-
-```javascript
+/** ### `script.js`This file brings the website to life with interactivity, animations, and the CMS functionality.```javascript
 document.addEventListener('DOMContentLoaded', () => {
-
+*/
     //================================================================
     // 1. CMS for Portfolio & Testimonials
     // Easily add or remove items here.
