@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-
     //================================================================
     // 1. CMS for Portfolio & Testimonials
     // Easily add or remove items here.
