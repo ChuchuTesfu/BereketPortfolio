@@ -1,4 +1,3 @@
-/** ### `script.js`This file brings the website to life with interactivity, animations, and the CMS functionality.```javascript
 document.addEventListener('DOMContentLoaded', () => {
 */
     //================================================================
